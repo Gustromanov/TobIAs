@@ -1,7 +1,15 @@
 # TobIAs
 
 Projeto web usando **Java com Servlets/JSP**, **PostgreSQL**, **Flyway** e **PgAdmin**, rodando com **Docker Compose**.
-Projato desenvolvido em equipe por @Gustromanov , @arthur-Gmp, @reinaldo-a,@P-luiz
+## 👨‍💻 Equipe
+
+- 🚀 Gustavo Batista — [@Gustromanov](https://github.com/Gustromanov)
+- 🚀 Arthur Guimaraes — [@arthur-Gm](https://github.com/arthur-Gm)
+- 🚀 Reinaldo Junior — [@reinaldo-a](https://github.com/reinaldo-a)
+- 🚀 Pedro Luiz — [@P-Luiz](https://github.com/P-Luiz)
+
+### Instituição
+Instituto Federal Baiano (IF Baiano)
 - [Trilha de Aprendizagem](docs/trilha_aprendizagem.md)
 
 ---
