@@ -1,7 +1,7 @@
 # TobIAs
 
 Projeto web usando **Java com Servlets/JSP**, **PostgreSQL**, **Flyway** e **PgAdmin**, rodando com **Docker Compose**.
-
+Projato desenvolvido em equipe por @Gustromanov , @arthur-Gmp, @reinaldo-a,@P-luiz
 - [Trilha de Aprendizagem](docs/trilha_aprendizagem.md)
 
 ---
