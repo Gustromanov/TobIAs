@@ -1,0 +1,76 @@
+<%@ page pageEncoding="UTF-8" %>
+<%
+String currentPath = request.getServletPath();
+String sidebarContentPage = (String) request.getAttribute("contentPage");
+String forwardPath = (String) request.getAttribute("jakarta.servlet.forward.servlet_path");
+boolean isDashboardActive = "/dashboard".equals(currentPath) || "/dashboard".equals(forwardPath)
+    || (sidebarContentPage != null && sidebarContentPage.contains("/dashboard/"));
+boolean isDisciplinesActive = (currentPath != null && (currentPath.startsWith("/Disciplines") || currentPath.startsWith("/Activity")))
+    || (forwardPath != null && (forwardPath.startsWith("/Disciplines") || forwardPath.startsWith("/Activity")))
+    || (sidebarContentPage != null && (sidebarContentPage.contains("/disciplines/") || sidebarContentPage.contains("/activity/")));
+boolean isAboutActive = "/sobre".equals(currentPath) || "/sobre".equals(forwardPath)
+    || (sidebarContentPage != null && sidebarContentPage.contains("/about/"));
+%>
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <a href="${pageContext.request.contextPath}/" class="sidebar-brand">
+      <div class="sidebar-logo-wrapper">
+        <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="TobIAs" class="sidebar-logo">
+      </div>
+      <span class="sidebar-brand-text">TobIAs</span>
+    </a>
+    <button class="sidebar-close-btn d-lg-none" id="sidebarCloseBtn" type="button">
+      <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M6.4 5 5 6.4l5.6 5.6L5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4 17.6 5 12 10.6 6.4 5Z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="sidebar-body">
+    <nav class="sidebar-nav">
+      <ul class="sidebar-menu">
+        <li class="sidebar-item">
+          <a href="${pageContext.request.contextPath}/dashboard" class="sidebar-link <%= isDashboardActive ? "active" : "" %>">
+            <span class="sidebar-icon">
+              <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 4h7v7H4V4Zm2 2v3h3V6H6Zm7-2h7v7h-7V4Zm2 2v3h3V6h-3ZM4 13h7v7H4v-7Zm2 2v3h3v-3H6Zm7-2h7v7h-7v-7Zm2 2v3h3v-3h-3Z"/>
+              </svg>
+            </span>
+            <span class="sidebar-label">Dashboard</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="${pageContext.request.contextPath}/Disciplines" class="sidebar-link <%= isDisciplinesActive ? "active" : "" %>">
+            <span class="sidebar-icon">
+              <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H10c1.1 0 2 .9 2 2v16H6.5A2.5 2.5 0 0 1 4 18.5v-13ZM6.5 5a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5H10V5H6.5ZM14 3h3.5A2.5 2.5 0 0 1 20 5.5v13a2.5 2.5 0 0 1-2.5 2.5H14V3Zm2 2v14h1.5a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H16Z"/>
+              </svg>
+            </span>
+            <span class="sidebar-label">Disciplinas</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="${pageContext.request.contextPath}/sobre" class="sidebar-link <%= isAboutActive ? "active" : "" %>">
+            <span class="sidebar-icon">
+              <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M11 17h2v-6h-2v6Zm0-8h2V7h-2v2Zm1-7a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"/>
+              </svg>
+            </span>
+            <span class="sidebar-label">Sobre nós</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="${pageContext.request.contextPath}/logout" class="sidebar-link logout-link">
+        <span class="sidebar-icon">
+          <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 3h9v2H6v14h7v2H4V3Zm12.6 5.4L20.2 12l-3.6 3.6-1.4-1.4 1.2-1.2H10v-2h6.4l-1.2-1.2 1.4-1.4Z"/>
+          </svg>
+        </span>
+        <span class="sidebar-label">Sair</span>
+      </a>
+    </div>
+  </div>
+</aside>

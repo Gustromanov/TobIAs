@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:16
+    container_name: postgres_db
+    restart: always
+    env_file:
+      - ../.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    env_file:
+      - ../.env
+    ports:
+      - "5051:80"
+    depends_on:
+      - db
+
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: java_app
+    ports:
+      - "8888:8080"
+    depends_on:
+      - db
+    env_file:
+      - ../.env
+    volumes:
+      - ../pom.xml:/workspace/pom.xml:delegated
+      - ../src/main/java:/workspace/src/main/java:delegated
+      - ../src/main/resources:/workspace/src/main/resources:delegated
+      - ../target:/workspace/target:delegated
+      - ../src/main/webapp/assets:/usr/local/tomcat/webapps/ROOT/assets:delegated
+      - ../src/main/webapp/WEB-INF/templates:/usr/local/tomcat/webapps/ROOT/WEB-INF/templates:delegated
+      - ../src/main/webapp/WEB-INF/web.xml:/usr/local/tomcat/webapps/ROOT/WEB-INF/web.xml:delegated
+
+volumes:
+  postgres_data:

@@ -1,0 +1,12 @@
+<%
+    String msg = (String) request.getAttribute("flashMessage");
+    String type = (String) request.getAttribute("flashType");
+
+    if (msg != null) {
+%>
+    <div class="alert alert-<%= type %>">
+        <%= msg %>
+    </div>
+<%
+    }
+%>

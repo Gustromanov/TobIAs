@@ -1,0 +1,47 @@
+<%@ page pageEncoding="UTF-8" %>
+<%
+String currentPageSection = (String) request.getAttribute("pageSection");
+String currentPageHeading = (String) request.getAttribute("pageHeading");
+String currentPageTitle = (String) request.getAttribute("pageTitle");
+%>
+<nav class="topbar">
+  <div class="topbar-left">
+    <button class="sidebar-toggle" id="sidebarToggle" type="button">
+      <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 6h16v2H4V6Zm0 5h16v2H4v-2Zm0 5h16v2H4v-2Z"/>
+      </svg>
+    </button>
+    <div class="topbar-heading">
+      <strong class="topbar-title"><%= currentPageHeading != null ? currentPageHeading : (currentPageTitle != null ? currentPageTitle : "TobIAs") %></strong>
+    </div>
+  </div>
+
+  <div class="topbar-right">
+    <div class="topbar-notifications">
+      <button class="notification-btn" type="button" aria-label="Notificações">
+        <svg class="notification-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 3a4 4 0 0 0-4 4v1.1c0 .7-.2 1.39-.57 1.98L6.2 12.1A3 3 0 0 0 8.74 16h6.52a3 3 0 0 0 2.54-3.9l-1.23-4.02A3.74 3.74 0 0 1 16 8.1V7a4 4 0 0 0-4-4Zm0 18a3 3 0 0 0 2.82-2H9.18A3 3 0 0 0 12 21Z"/>
+        </svg>
+        <span class="notification-badge">3</span>
+      </button>
+    </div>
+
+    <a href="${pageContext.request.contextPath}/user/update-form" style="text-decoration:none;display:flex; align-items:center;gap:1px;color:inherit;">
+      <div class="topbar-user" style="gap:5px">
+        <div class="user-avatar">
+            <img
+              src="${pageContext.request.contextPath}/assets/images/avatar/${not empty usuarioLogado.photo ? usuarioLogado.photo : 'default.png'}"
+              alt="User"
+              onerror="this.src='${pageContext.request.contextPath}/assets/images/avatar/default.png';"
+            >
+            <div class="avatar-fallback">
+              ${not empty userName ? userName.substring(0,1) : 'U'}
+            </div>
+        </div>
+        <div class="user-info">
+          <span class="user-name">${not empty userName ? userName.split(" ")[0] : 'Usuário'}</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</nav>

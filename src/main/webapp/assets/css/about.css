@@ -1,0 +1,250 @@
+.about-shell {
+  display: grid;
+  gap: 18px;
+}
+
+.about-hero,
+.about-panel,
+.about-closing {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.about-hero {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  padding: 28px;
+}
+
+.about-kicker {
+  color: #2563eb;
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.about-hero h1,
+.about-panel h2 {
+  color: #0f172a;
+  font-weight: 700;
+  margin: 0;
+}
+
+.about-hero h1 {
+  font-size: 2rem;
+}
+
+.about-hero p,
+.about-panel p,
+.about-closing p,
+.about-feature p {
+  color: #64748b;
+  margin: 8px 0 0;
+}
+
+.about-hero p {
+  max-width: 72ch;
+}
+
+.about-hero-card {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 8px;
+  color: #1e3a8a;
+  display: grid;
+  flex: 0 0 260px;
+  gap: 4px;
+  padding: 18px;
+}
+
+.about-hero-card strong {
+  color: #0f172a;
+  font-size: 1.05rem;
+}
+
+.about-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about-grid-main {
+  align-items: stretch;
+}
+
+.about-panel {
+  padding: 22px;
+}
+
+.about-panel h2 {
+  font-size: 1.18rem;
+}
+
+.about-section-header {
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+}
+
+.about-feature-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-feature {
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+}
+
+.about-feature strong,
+.about-person-card strong {
+  color: #0f172a;
+}
+
+.about-feature-icon {
+  align-items: center;
+  background: #e0f2fe;
+  border-radius: 8px;
+  color: #0369a1;
+  display: inline-flex;
+  height: 42px;
+  justify-content: center;
+  width: 42px;
+}
+
+.about-icon {
+  fill: currentColor;
+  height: 24px;
+  width: 24px;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.about-tags span {
+  background: #f1f5f9;
+  border: 1px solid #dbe4ef;
+  border-radius: 999px;
+  color: #334155;
+  font-weight: 700;
+  padding: 7px 12px;
+}
+
+.about-team-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-team-grid-mentors {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about-person-card {
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  min-height: 210px;
+  padding: 18px;
+  text-align: center;
+}
+
+.about-photo-placeholder {
+  align-items: center;
+  aspect-ratio: 1;
+  background: #fff;
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  color: #64748b;
+  display: inline-flex;
+  justify-content: center;
+  max-width: 132px;
+  width: 100%;
+}
+
+.about-photo-placeholder i {
+  font-size: 42px;
+}
+
+.about-photo-placeholder img {
+  border-radius: 6px;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.about-photo-placeholder-mentor {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.about-person-card span {
+  color: #64748b;
+}
+
+.about-closing {
+  border-left: 4px solid #2563eb;
+  padding: 20px 22px;
+}
+
+.about-closing p {
+  color: #334155;
+  font-weight: 700;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .about-hero,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .about-hero-card {
+    flex-basis: auto;
+  }
+
+  .about-feature-grid,
+  .about-team-grid,
+  .about-team-grid-mentors {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .about-feature-grid,
+  .about-team-grid,
+  .about-team-grid-mentors {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero,
+  .about-panel,
+  .about-closing {
+    padding: 18px;
+  }
+}

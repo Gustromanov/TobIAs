@@ -1,0 +1,90 @@
+@startuml
+title Diagrama de Objetos - Sistema TobIAs
+
+skinparam object {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  ArrowColor #475569
+}
+
+object "usuarioProfessor: User" as usuarioProfessor {
+  id = 1
+  name = "Ana Souza"
+  cpf = 12345678901
+  email = "ana@tobias.com"
+  password = "hash..."
+}
+
+object "professorAna: Professor" as professorAna {
+  id = 1
+  usuario_id = 1
+  especialidade = "Matematica"
+  matricula_siape = "SIAPE001"
+}
+
+object "usuarioAluno: User" as usuarioAluno {
+  id = 2
+  name = "Joao Lima"
+  cpf = 98765432100
+  email = "joao@tobias.com"
+  password = "hash..."
+}
+
+object "alunoJoao: Aluno" as alunoJoao {
+  id = 1
+  usuario_id = 2
+  matricula = "2026001"
+}
+
+object "matematica: Discipline" as matematica {
+  id = 10
+  name = "Matematica"
+  code = "MAT101"
+  description = "Fundamentos de matematica"
+  idProfessor = 1
+  professorName = "Ana Souza"
+}
+
+object "matriculaJoao: Matricula" as matriculaJoao {
+  id = 1
+  aluno_id = 1
+  disciplina_id = 10
+  data_matricula = "2026-05-12"
+  nota_final = null
+  status = "ativa"
+}
+
+object "lista1: Activity" as lista1 {
+  id = 20
+  title = "Lista de Funcoes"
+  submitDate = "2026-05-12"
+  deliveryDate = "2026-05-19"
+  peso = 2.0
+  idDiscipline = 10
+}
+
+object "questao1: Question" as questao1 {
+  id = 30
+  enunciado = "Resolva f(x) = 2x + 3"
+  peso = 1.0
+  idActivity = 20
+}
+
+object "questao2: Question" as questao2 {
+  id = 31
+  enunciado = "Explique dominio e imagem"
+  peso = 1.0
+  idActivity = 20
+}
+
+usuarioProfessor -- professorAna : especializa
+usuarioAluno -- alunoJoao : especializa
+professorAna -- matematica : ministra
+alunoJoao -- matriculaJoao : realiza
+matematica -- matriculaJoao : recebe
+matematica -- lista1 : possui
+lista1 -- questao1 : contem
+lista1 -- questao2 : contem
+
+
+@enduml

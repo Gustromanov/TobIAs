@@ -1,0 +1,211 @@
+:root {
+  --error-ink: #172033;
+  --error-muted: #667085;
+  --error-blue: #2563eb;
+  --error-teal: #0f766e;
+  --error-yellow: #f2b84b;
+  --error-line: rgba(23, 32, 51, 0.12);
+  --control-height: 46px;
+  --control-radius: 9px;
+  --control-padding-x: 14px;
+  --control-gap: 10px;
+  --control-font-size: 0.95rem;
+  --control-icon-size: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.error-page {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--error-ink);
+  font-family: "Public Sans", Arial, sans-serif;
+  background:
+    linear-gradient(135deg, rgba(245, 248, 255, 0.96), rgba(238, 251, 247, 0.94)),
+    #f7fafc;
+}
+
+.error-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.error-main {
+  width: min(100% - 40px, 1120px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+  align-items: center;
+  gap: clamp(34px, 7vw, 96px);
+  padding: 48px 0;
+}
+
+.error-copy {
+  max-width: 650px;
+}
+
+.error-title {
+  margin: 0;
+  max-width: 620px;
+  color: var(--error-ink);
+  font-size: 4.4rem;
+  font-weight: 900;
+  line-height: 1.02;
+}
+
+.error-title span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--error-blue);
+  font-size: 8rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 0.9;
+}
+
+.error-title small {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--error-teal);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.error-text {
+  max-width: 540px;
+  margin: 22px 0 0;
+  color: var(--error-muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.error-actions {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.error-button {
+  min-height: var(--control-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--control-gap);
+  border: 1px solid transparent;
+  border-radius: var(--control-radius);
+  padding: 0 var(--control-padding-x);
+  font-size: var(--control-font-size);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.error-button i,
+.error-button svg {
+  width: var(--control-icon-size);
+  height: var(--control-icon-size);
+  font-size: var(--control-icon-size);
+  flex: 0 0 var(--control-icon-size);
+}
+
+.error-button-primary {
+  color: #fff;
+  background: linear-gradient(135deg, var(--error-blue), var(--error-teal));
+  box-shadow: 0 18px 36px rgba(37, 99, 235, 0.24);
+}
+
+.error-button-secondary {
+  color: var(--error-ink);
+  border-color: var(--error-line);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.error-visual {
+  position: relative;
+  min-height: 440px;
+  display: grid;
+  place-items: center;
+}
+
+.error-visual::before {
+  position: absolute;
+  width: min(78vw, 410px);
+  height: min(62vw, 330px);
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: 28px;
+  background:
+    linear-gradient(rgba(23, 32, 51, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 32, 51, 0.05) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(15, 118, 110, 0.12) 54%, rgba(242, 184, 75, 0.18));
+  background-size: 26px 26px, 26px 26px, auto;
+  content: "";
+  transform: rotate(-4deg);
+}
+
+.error-visual img {
+  position: relative;
+  width: min(72vw, 360px);
+  filter: drop-shadow(0 34px 34px rgba(23, 32, 51, 0.2));
+}
+
+@media (max-width: 860px) {
+  .error-main {
+    grid-template-columns: 1fr;
+    padding-bottom: 42px;
+  }
+
+  .error-copy {
+    max-width: none;
+  }
+
+  .error-title {
+    font-size: 3.2rem;
+  }
+
+  .error-visual {
+    min-height: 300px;
+    order: -1;
+  }
+
+}
+
+@media (max-width: 520px) {
+  .error-main {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .error-title {
+    font-size: 2.45rem;
+  }
+
+  .error-title span {
+    font-size: 5.2rem;
+  }
+
+  .error-title small {
+    font-size: 0.95rem;
+  }
+
+  .error-actions {
+    display: grid;
+  }
+
+  .error-button {
+    width: 100%;
+  }
+
+  .error-visual {
+    min-height: 250px;
+  }
+
+  .error-visual img {
+    width: min(68vw, 250px);
+  }
+
+}

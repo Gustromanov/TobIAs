@@ -1,0 +1,24 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.time.Year" %>
+<footer class="layout-footer">
+  <div class="custom-container">
+    <div class="layout-footer-inner">
+      <div class="layout-footer-branding">
+        <img
+          src="${pageContext.request.contextPath}/assets/images/tobias.png"
+          alt="TobIAs"
+          class="layout-footer-logo">
+        <span class="layout-footer-subtitle">Sistema de Educação</span>
+      </div>
+
+      <div class="layout-footer-info">
+        <small class="layout-footer-status">
+          <i class="ti ti-circle-check"></i>
+          Ambiente ativo
+        </small>
+        <small class="layout-footer-note">
+          &copy; <%= Year.now().getValue() %> TobIAs. Todos os direitos reservados.
+        </small>
+      </div>
+    </div>
+  </div>
+</footer>

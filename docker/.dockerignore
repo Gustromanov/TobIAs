@@ -1,0 +1,35 @@
+# Git
+.git
+.gitignore
+
+# Docker
+docker-compose.yml
+.dockerignore
+
+# IDE
+.vscode
+.idea
+*.iml
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Build Java
+target
+build
+*.class
+*.jar
+
+# Node (caso tenha frontend)
+node_modules
+
+# Python (caso tenha script)
+__pycache__
+
+# arquivos temporários
+*.tmp
+*.swp

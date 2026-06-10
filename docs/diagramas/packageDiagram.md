@@ -1,0 +1,108 @@
+# Diagrama de Pacotes - TobIAs
+
+Este diagrama mostra a organização dos pacotes Java do sistema e as dependências principais entre eles.
+
+O arquivo principal está em [`packageDiagram.puml`](packageDiagram.puml).
+
+```plantuml
+@startuml packageDiagram
+allowmixing
+title Diagrama de Pacotes - Sistema TobIAs
+
+skinparam packageStyle rectangle
+skinparam package {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  ArrowColor #475569
+}
+
+package "com.tobias.application" as application {
+  class FlashMessage
+  class Main
+}
+
+package "com.tobias.config" as config {
+  class AppStartupListener
+  class DatabaseConfig
+  class FlywayConfig
+  class PasswordHash
+}
+
+package "com.tobias.controller" as controller {
+  package "activity" as controller_activity {
+    class ActivityController
+  }
+  package "auth" as controller_auth {
+    class AuthController
+  }
+  package "dashboard" as controller_dashboard {
+    class DashboardController
+  }
+  package "disciplines" as controller_disciplines {
+    class DisciplinesController
+  }
+  package "error" as controller_error {
+    class ErrorController
+  }
+  package "user" as controller_user {
+    class UserController
+  }
+}
+
+package "com.tobias.dao" as dao {
+  class ActivityDAO
+  class AuthDAO
+  class BaseDAO
+  class DisciplineDAO
+  class QuestionDAO
+  class StudentDAO
+  class TeacherDAO
+  class UserDAO
+}
+
+package "com.tobias.filter" as filter {
+  class AuthFilter
+}
+
+package "com.tobias.model" as model {
+  class Activity
+  class Discipline
+  class Question
+  class User
+}
+
+folder "WEB-INF/templates" as templates
+database "PostgreSQL" as database
+
+' Dependências dos Controllers
+controller ..> application : utiliza utilitários de tela
+controller ..> dao : acessa persistencia
+controller ..> model : manipula entidades
+controller ..> templates : encaminha requisição (JSP)
+controller_auth ..> config : utiliza hash de senha
+controller_user ..> config : utiliza hash de senha
+
+' Dependências de Inicialização e Config
+application ..> config : inicializacao
+application ..> dao : testa conexao no boot
+
+' Dependências do DAO
+dao ..> config : solicita conexao JDBC
+dao ..> model : mapeia objetos
+dao ..> database : executa SQL
+
+' Dependências de Segurança
+filter ..> controller : intercepta e redireciona (ex: /login)
+
+@enduml
+
+
+
+
+```
+
+Para renderizar localmente com PlantUML:
+
+```bash
+plantuml docs/diagramas/packageDiagram.puml
+```
